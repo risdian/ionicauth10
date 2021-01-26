@@ -20,6 +20,8 @@ class BranchSeeder extends Seeder
             'city'          => 'johor bahru',
             'state'         => 'johor',
             'country'       => 'Malaysia',
+            'phone_number'  => '0173519861',
+
         ]);
 
         Branch::create([
@@ -30,6 +32,8 @@ class BranchSeeder extends Seeder
             'city'          => 'johor bahru',
             'state'         => 'johor',
             'country'       => 'Malaysia',
+            'phone_number'  => '0173519861',
+
         ]);
 
         Branch::create([
@@ -40,6 +44,7 @@ class BranchSeeder extends Seeder
             'city'          => 'Kota Tinggi',
             'state'         => 'johor',
             'country'       => 'Malaysia',
+            'phone_number'  => '0173519861',
         ]);
     }
 }
