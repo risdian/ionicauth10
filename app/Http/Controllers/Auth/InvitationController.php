@@ -20,18 +20,18 @@ class InvitationController extends Controller
     {
 
         $request->validate([
-            'name'          => 'required|string',
-            'nric'          => 'required|string|unique:users',
-            'country_code'  => 'required|string',
-            'mobile'        => 'required|string|unique:users',
-            'email'         => 'required|string|email|unique:users',
+
+            'name'          =>  'required|max:191',
+            'mobile'        =>  'required|unique:users',
+            'email'         =>  'required|string|email|max:255|unique:users,email',
+            'nric'          =>  'required|unique:users',
+
         ]);
 
         $user = new User;
 
         $user->name = $request->name;
         $user->nric = $request->nric;
-        $user->country_code = $request->country_code;
         $user->mobile = $request->mobile;
         $user->email = $request->email;
         $user->password = bcrypt('Smsgvs32!@#$');
