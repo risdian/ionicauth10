@@ -172,6 +172,7 @@ Route::group([
 
             Route::get('/products', 'Auth\SearchController@product');
             Route::get('/orders', 'Auth\SearchController@order');
+            Route::get('/items', 'Auth\SearchController@item');
 
         });
 

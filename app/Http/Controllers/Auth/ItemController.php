@@ -37,7 +37,7 @@ class ItemController extends BaseController
         // ->get();
 
 
-        $items = Item::where('user_id',  Auth::user()->id)->with('product')->get();
+        $items = Item::where('user_id',  Auth()->user()->id)->with('product')->get();
 
         return response()->json($items);
 
@@ -159,14 +159,7 @@ class ItemController extends BaseController
 
         $item = $this->itemRepository->updateItem($params);
         return 'babi';
-        // if (!$item) {
-        //     return response()->json([
-        //         'message' => 'Unauthorized'
-        //     ], 401);
-        // }
-        // return response()->json([
-        //     'message' => 'Item update successfully'
-        // ], 201);
+
     }
 
     public function add(Request $request){

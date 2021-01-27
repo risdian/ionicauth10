@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {
@@ -13,14 +14,31 @@ class SearchController extends Controller
 
             $search = $request->get('search');
 
-            $products = Product::where('name', 'like', '%'.$search.'%')->with('category', 'branch', 'images')->get();
-
-
-            // $products = Product::where('name', 'like', '%'.$search.'%')->get();
+            $products = Product::
+                where('name', 'like', '%'.$search.'%')
+                ->with('category', 'branch', 'images')
+                ->get();
 
             return response()->json($products);
 
     }
+
+    public function item(Request $request){
+
+        $search = $request->get('search');
+
+        $products = Item::join('products', 'products.id', '=', 'items.product_id')
+            ->where('items.user_id',  Auth()->user()->id)
+            ->where('products.name', 'like', '%'.$search.'%')
+            ->with('product')->get();
+
+        // $products = Product::
+        // where('name', 'like', '%'.$search.'%')
+        // ->with('category', 'branch', 'images')->get();
+
+        return response()->json($products);
+
+}
 
     public function order(Request $request){
 
@@ -39,5 +57,5 @@ class SearchController extends Controller
 
         return response()->json($orders);
 
-}
+    }
 }
