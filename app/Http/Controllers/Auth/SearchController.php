@@ -27,10 +27,18 @@ class SearchController extends Controller
 
         $search = $request->get('search');
 
-        $products = Item::join('products', 'products.id', '=', 'items.product_id')
-            ->where('items.user_id',  Auth()->user()->id)
-            ->where('products.name', 'like', '%'.$search.'%')
-            ->with('product')->get();
+        // $products = Item::join('products', 'products.id', '=', 'items.product_id')
+        //     ->where('items.user_id',  Auth()->user()->id)
+        //     ->where('products.name', 'like', '%'.$search.'%')
+        //     ->with('product')->get();
+
+
+        $products = Product::whereIn('id',
+            Item::select('product_id')
+            ->where('user_id', Auth()->user()->id)
+            ->get())->where('name', 'like', '%'.$search.'%')
+            ->with('category', 'branch', 'images')
+            ->get();
 
         // $products = Product::
         // where('name', 'like', '%'.$search.'%')
