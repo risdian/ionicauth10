@@ -64,19 +64,8 @@ class OrderController extends BaseController
             'payment' => 'required',
         ]);
 
-        // if($request->payment == 'online_payment'){
-
         $order = $this->orderRepository->updateAppOrderDetails($request->all());
 
-        // }else{
-
-        //     // $order = $this->orderRepository->updateAppOrderDetails($request->all());
-
-        // }
-
-        // if ($order) {
-        //     $this->toyyibPay->processPayment($order);
-        // }
 
         if (!$order) {
             return response()->json([

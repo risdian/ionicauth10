@@ -109,6 +109,10 @@ class SettingsTableSeeder extends Seeder
             'key'                       =>  'personal_shopper_tier_3',
             'value'                     =>  '2',
         ],
+        [
+            'key'                       =>  'tax_value',
+            'value'                     =>  '6',
+        ],
     ];
 
     /**
