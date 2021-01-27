@@ -35,7 +35,7 @@ class ProductController extends BaseController
     {
         // $products = $this->productRepository->listProducts()->with('category', 'branch');
 
-        $products = Product::with('category', 'branch', 'images')->get();
+        $products = Product::with('category', 'branch', 'images')->take(5)->get();
 
         return response()->json($products);
 
