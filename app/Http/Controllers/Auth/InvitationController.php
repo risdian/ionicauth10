@@ -35,7 +35,7 @@ class InvitationController extends Controller
         $user->mobile = $request->mobile;
         $user->email = $request->email;
         $user->password = bcrypt('Smsgvs32!@#$');
-        $user->parent_id = $request->user()->id;
+        $user->parent_id = Auth()->user()->id;
 
         if(Auth()->user()->status == 'admin'){
 
