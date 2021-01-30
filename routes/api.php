@@ -174,6 +174,7 @@ Route::group([
         Route::group(['prefix'  =>   'searching'], function() {
 
             Route::get('/products', 'Auth\SearchController@product');
+            Route::get('/products/items', 'Auth\SearchController@item_product');
             Route::get('/orders', 'Auth\SearchController@order');
             Route::get('/items', 'Auth\SearchController@item');
 

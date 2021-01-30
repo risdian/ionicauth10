@@ -100,6 +100,8 @@ class Product extends Model
         return $this->hasMany(Item::class);
     }
 
+
+
     public function orders(){
 
         return $this->belongsToMany(Order::class)->withPivot(['id', 'price', 'quantity', 'tracking_status', 'tracking_number', 'tracking_datetime'])->withTimestamps();

@@ -23,6 +23,23 @@ class SearchController extends Controller
 
     }
 
+    public function item_product(Request $request){
+
+            $search = $request->get('search');
+
+            $products = Product::
+                where('name', 'like', '%'.$search.'%')
+                ->with(
+                    array('category', 'branch', 'images' ,'items' => function($query) {
+                        $query->where('user_id', Auth()->user()->id);
+                    })
+                )
+                ->get();
+
+            return response()->json($products);
+
+    }
+
     public function item(Request $request){
 
         $search = $request->get('search');
