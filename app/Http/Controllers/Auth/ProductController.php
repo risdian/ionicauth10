@@ -62,7 +62,11 @@ class ProductController extends BaseController
     public function select($id)
     {
         // $product = $this->productRepository->findProductById($id);
-        $product = Product::with('category', 'branch', 'images')->find($id);
+        $product = Product::with(
+            array('category', 'branch', 'images' ,'items' => function($query) {
+            $query->where('user_id', Auth()->user()->id);
+        })
+        )->find($id);
         return response()->json($product);
 
     }
