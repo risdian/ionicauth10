@@ -81,4 +81,12 @@ class InvitationController extends Controller
         return view('site.pages.validation.validate')->with(['token' => $token, 'email' => $request->email]);
 
     }
+
+    public function profile($id){
+
+        $user = User::where('id', $id)->first();
+
+        return response()->json($user);
+
+    }
 }

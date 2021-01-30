@@ -46,7 +46,7 @@ Route::group([
         Route::group(['prefix'  =>   'invitations'], function() {
 
             // Route::get('', 'Auth\UserController@index');
-            // Route::get('/{id}/edit', 'Auth\BrandController@edit');
+            Route::get('/{id}', 'Auth\InvitationController@profile');
             Route::post('/store', 'Auth\InvitationController@store');
             Route::get('', 'Auth\InvitationController@index');
             // Route::get('/{id}/delete', 'Auth\BrandController@delete');
