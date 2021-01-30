@@ -41,6 +41,24 @@ class ProductController extends BaseController
 
     }
 
+    public function items()
+    {
+
+        $products = Product::with(
+
+            // Item::where('user_id', Auth::user()->id)
+
+            // ->get()
+
+            array('category', 'branch', 'images' ,'items' => function($query) {
+                $query->where('user_id', Auth()->user()->id);
+            })
+        )->get();
+
+        return response()->json($products);
+
+    }
+
     public function select($id)
     {
         // $product = $this->productRepository->findProductById($id);

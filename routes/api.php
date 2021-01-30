@@ -88,6 +88,8 @@ Route::group([
 
             Route::get('', 'Auth\ProductController@index');
             Route::get('/create', 'Auth\ProductController@create');
+             Route::get('/items', 'Auth\ProductController@items');
+
             Route::post('/store', 'Auth\ProductController@store');
             Route::get('/{id}/edit', 'Auth\ProductController@edit');
             Route::get('/{id}', 'Auth\ProductController@select');
@@ -98,6 +100,7 @@ Route::group([
 
             Route::post('/images/upload', 'Auth\ProductImageController@upload');
             Route::get('/images/{id}/delete', 'Auth\ProductImageController@delete');
+
 
         });
 

@@ -49,7 +49,8 @@ class ItemController extends BaseController
                 Item::select('product_id')
                 ->where('user_id', Auth::user()->id)
 
-                ->get())->with('category', 'branch', 'images')
+                ->get()
+                )->with('category', 'branch', 'images')
             ->get();
 
         return response()->json($items);
