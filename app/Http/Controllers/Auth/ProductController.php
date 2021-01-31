@@ -10,6 +10,7 @@ use App\Contracts\CategoryContract;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\StoreProductFormRequest;
+use App\Models\Item;
 use App\Models\ProductImage;
 
 class ProductController extends BaseController
@@ -157,7 +158,13 @@ class ProductController extends BaseController
     {
         $product = Product::findOrFail($id);
 
+        $item = Item::where('product_id', $id)->get();
+
+        $image = ProductImage::where('product_id', $id)->get();
+
         $product->delete();
+        $item->delete();
+        $image->delete();
 
         return response()->json(['status' => 'Success']);
     }
