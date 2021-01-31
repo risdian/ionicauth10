@@ -26,6 +26,13 @@ class ProductImageController extends Controller
         $this->validate($request, [
             'image.*'              =>  'mimes:jpg,jpeg,png',
         ]);
+
+        if($request->image === null){
+
+            return response()->json(['status' => 'kepala bana']);
+
+        }
+
         $product = $this->productRepository->findProductById($request->product_id);
 
         foreach($request->image as $image){
@@ -39,17 +46,6 @@ class ProductImageController extends Controller
             $product->images()->save($productImage);
 
         }
-
-        // if ($request->has('image')) {
-
-        //     $image = $this->uploadOne($request->image, 'products');
-
-        //     $productImage = new ProductImage([
-        //         'full'      =>  $image,
-        //     ]);
-
-        //     $product->images()->save($productImage);
-        // }
 
         return response()->json(['status' => 'Success']);
     }
