@@ -135,9 +135,6 @@ class ProductController extends BaseController
             'height'            =>  'regex:/^\d+(\.\d{1,2})?$/',
         ]);
 
-        return $request->all();
-
-
         $params = $request->except('_token');
 
         $product = $this->productRepository->updateProduct($params);
