@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Item;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -76,11 +77,26 @@ class SearchController extends Controller
         ->orwhere('address', 'like', '%'.$search.'%')
         ->orwhere('state', 'like', '%'.$search.'%')
         ->orwhere('postcode', 'like', '%'.$search.'%')
-        ->orwhere('phone_number', 'like', '%'.$search.'%')->get();
+        ->orwhere('phone_number', 'like', '%'.$search.'%')
+        ->where('user_id', Auth()->user()->id)
+        ->get();
 
         // $products = Product::where('name', 'like', '%'.$search.'%')->get();
 
         return response()->json($orders);
+
+    }
+
+    public function invite(Request $request){
+        $search = $request->get('search');
+
+        $invite = User::where('parent_id', Auth()->user()->id)
+        ->orwhere('name', 'like', '%'.$search.'%')
+        ->orwhere('email', 'like', '%'.$search.'%')
+        ->orwhere('monbile', 'like', '%'.$search.'%')
+        ->get();
+
+        return response()->json($invite);
 
     }
 }
