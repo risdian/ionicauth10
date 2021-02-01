@@ -42,9 +42,19 @@ class CheckoutController extends BaseController
     {
         $order = $this->orderRepository->findOrderByNumber($request->order_id);
 
-        $order->payment_status = $request->status_id;
-        $order->payment_transaction_id = $request->transaction_id;
-        $order->payment_datetime = Carbon::now();
+        if($request->status_id == 1){
+
+            $order->status = 'processing';
+            $order->payment_status = $request->status_id;
+            $order->payment_transaction_id = $request->transaction_id;
+            $order->payment_datetime = Carbon::now();
+
+        }else{
+
+            $order->payment_status = $request->status_id;
+            $order->payment_transaction_id = $request->transaction_id;
+            $order->payment_datetime = Carbon::now();
+        }
 
         $order->save();
 
