@@ -93,7 +93,8 @@ class SearchController extends Controller
         $invite = User::where('parent_id', Auth()->user()->id)
         ->orwhere('name', 'like', '%'.$search.'%')
         ->orwhere('email', 'like', '%'.$search.'%')
-        ->orwhere('monbile', 'like', '%'.$search.'%')
+        ->orwhere('nric', 'like', '%'.$search.'%')
+        ->orwhere('mobile', 'like', '%'.$search.'%')
         ->get();
 
         return response()->json($invite);
