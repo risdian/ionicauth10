@@ -32,21 +32,18 @@ class ProductController extends BaseController
         $this->productRepository = $productRepository;
     }
 
-    public function sale_expert()
-    {
-        // $products = $this->productRepository->listProducts()->with('category', 'branch');
-
-        $products = Product::where('user_id', Auth()->user()->id)->with('category', 'branch', 'images')->get();
-
-        return response()->json($products);
-
-    }
 
     public function index()
     {
         // $products = $this->productRepository->listProducts()->with('category', 'branch');
+        if(Auth()->user()->status == 'admin'){
+            $products = Product::with('category', 'branch', 'images')->get();
 
-        $products = Product::with('category', 'branch', 'images')->get();
+        }else{
+
+            $products = Product::where('user_id', Auth()->user()->id)->with('category', 'branch', 'images')->get();
+
+        }
 
         return response()->json($products);
 

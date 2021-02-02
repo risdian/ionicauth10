@@ -14,11 +14,19 @@ class SearchController extends Controller
     public function product(Request $request){
 
             $search = $request->get('search');
+            if(Auth()->user()->status == 'admin'){
+                $products = Product::
+                where('name', 'like', '%'.$search.'%')
+                ->with('category', 'branch', 'images')
+                ->get();
+            }else{
 
-            $products = Product::
+                $products = Product::
                 where('name', 'like', '%'.$search.'%')->where('user_id', Auth()->user()->id)
                 ->with('category', 'branch', 'images')
                 ->get();
+            }
+
 
             return response()->json($products);
 
