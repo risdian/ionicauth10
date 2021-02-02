@@ -86,7 +86,9 @@ Route::group([
 
         Route::group(['prefix'  =>   'products'], function() {
 
+            Route::get('/sale_expert', 'Auth\ProductController@sale_expert');
             Route::get('', 'Auth\ProductController@index');
+
             Route::get('/create', 'Auth\ProductController@create');
              Route::get('/items', 'Auth\ProductController@items');
 
