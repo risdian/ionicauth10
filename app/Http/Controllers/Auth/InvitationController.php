@@ -72,11 +72,9 @@ class InvitationController extends Controller
         ], 201);
     }
 
-    public function password(){
+    public function password(Request $request, $token = null){
 
-        dd('aneer');
-
-        // return view('site.pages.validation.validate')->with(['token' => $token, 'email' => $request->email]);
+        return view('site.pages.validation.validate')->with(['token' => $token, 'email' => $request->email]);
 
     }
 
