@@ -61,7 +61,10 @@ Route::get('/order/complete/{order_number}', 'Site\CheckoutController@order')->n
 
 Route::post('/payment/update', 'Site\CheckoutController@complete')->name('payment.update');
 
-Route::get('/invitation/{token}', 'Auth\invitationController@aneer')->name('invitation.validate');
+// Route::get('/invitation/{token}', 'Auth\invitationController@aneer')->name('invitation.validate');
+
+Route::get('/invitations/{token}', 'Auth\invitationController@aneer');
+
 
 Route::get('/order/print/{id}', 'Auth\DeliveryController@print');
 
