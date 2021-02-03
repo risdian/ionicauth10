@@ -72,7 +72,7 @@ class InvitationController extends Controller
         ], 201);
     }
 
-    public function password(Request $request){
+    public function password(){
 
         dd('aneer');
 
