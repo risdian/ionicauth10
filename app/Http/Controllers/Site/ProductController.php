@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Contracts\ProductContract;
 use App\Contracts\AttributeContract;
@@ -29,6 +30,21 @@ class ProductController extends Controller
         $attributes = $this->attributeRepository->listAttributes();
 
         return view('site.pages.product', compact('product', 'attributes'));
+    }
+
+
+    public function click($id){
+
+        $product = Product::find($id);
+
+        $counter = $product->counter + 1;
+
+        $product->counter = $counter;
+
+        $product->save();
+
+        return redirect('https://wasap.my/60173519861/');
+
     }
 
     public function addToCart(Request $request)

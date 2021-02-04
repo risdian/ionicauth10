@@ -37,6 +37,7 @@ class Product extends Model
         'status',
         'featured',
         'detail_image',
+        'counter',
     ];
 
     /**

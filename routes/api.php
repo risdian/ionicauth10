@@ -41,25 +41,17 @@ Route::group([
         Route::post('product/create', 'Auth\ProductController@create');
         Route::post('product/update', 'Auth\ProductController@update');
 
-        // Route::post('invitation/create', 'Auth\InvitationController@invite');
 
         Route::group(['prefix'  =>   'invitations'], function() {
 
-            // Route::get('', 'Auth\UserController@index');
             Route::get('/{id}', 'Auth\InvitationController@profile');
             Route::post('/store', 'Auth\InvitationController@store');
             Route::get('', 'Auth\InvitationController@index');
-            // Route::get('/{id}/delete', 'Auth\BrandController@delete');
-
         });
 
         Route::group(['prefix'  =>   'users'], function() {
 
-            // Route::get('', 'Auth\UserController@index');
-            // Route::get('/{id}/edit', 'Auth\BrandController@edit');
-            // Route::post('/store', 'Auth\BrandController@store');
             Route::post('/update', 'Auth\UserController@update');
-            // Route::get('/{id}/delete', 'Auth\BrandController@delete');
             Route::post('/password', 'Auth\UserController@password');
 
         });
@@ -166,8 +158,7 @@ Route::group([
         Route::group(['prefix'  =>   'sales'], function() {
 
             Route::get('', 'Auth\DashboardController@sales');
-            // Route::get('/{id}', 'Auth\DeliveryController@edit');
-            // Route::post('/update', 'Auth\DeliveryController@update');
+
         });
 
 

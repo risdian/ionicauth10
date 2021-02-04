@@ -85,4 +85,11 @@ class InvitationController extends Controller
         return response()->json($user);
 
     }
+
+    public function view(){
+
+        // return 'sial la anjir';
+
+    }
+
 }

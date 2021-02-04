@@ -35,6 +35,8 @@ class CreateProductsTable extends Migration
             $table->boolean('status')->default(1);
             $table->boolean('featured')->default(0);
 
+            $table->unsignedBigInteger('counter')->default(0);
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             // $table->foreign('branch_id')->references('id')->on('branchs')->onDelete('cascade');
             // $table->foreign('categories')->references('id')->on('categories')->onDelete('cascade');

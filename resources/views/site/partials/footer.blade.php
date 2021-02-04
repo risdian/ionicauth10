@@ -52,7 +52,7 @@
 		</section>	<!-- footer-top.// -->
 
 		<section class="footer-copyright border-top">
-				<p class="float-left text-muted"> &copy 2019 Company  All rights resetved </p>
+				<p class="float-left text-muted"> &copy 2021 Company  All rights resetved </p>
 				<p target="_blank" class="float-right text-muted">
 					<a href="#">Privacy & Cookies</a> &nbsp   &nbsp
 					<a href="#">Accessibility</a>

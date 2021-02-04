@@ -3,15 +3,6 @@
 
 @section('content')
 
-<header class="section-header">
-    <section class="header-main border-bottom">
-    <div class="container">
-        <a href="http://bootstrap-ecommerce.com" class="brand-wrap"><img class="logo" src="../images/logo.png"></a>
-    </div> <!-- container.// -->
-    </section>
-</header> <!-- section-header.// -->
-
-
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name  padding-y-sm">
     <div class="container">
@@ -23,78 +14,32 @@
 
 
     <div class="row">
+        @foreach ($items as $item)
         <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/1.jpg"> </a>
+            <div href="{{ route('product.show', $item->slug) }}" class="card card-product-grid">
+                <a href="{{ route('product.show', $item->slug) }}" class="img-wrap">
+                    @if($item->images->count() > 0)
+                    <img src="{{ asset('storage/'.$item->images->first()->full) }}">
+                    @else
+                    <img src="https://via.placeholder.com/176">
+                    @endif
+                </a>
                 <figcaption class="info-wrap">
-                    <a href="#" class="title">Just another product name</a>
-                    <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
+                    <a href="{{ route('product.show', $item->slug) }}"  class="title">{{ $item->name }}</a>
+                    @if ($item->sale_price > 0)
+                        <var class="price h4 text-danger">
+                            <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $item->sale_price }}</span>
+                            <del class="price-old"> {{ config('settings.currency_symbol') }}{{ $item->price }}</del>
+                        </var>
+                    @else
+                    <var class="price h4 text-success">
+                        <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $item->price }}</span>
+                    </var>
+                    @endif
                 </figcaption>
             </div>
         </div> <!-- col.// -->
-        <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/2.jpg"> </a>
-                <figcaption class="info-wrap">
-                    <a href="#" class="title">Some item name here</a>
-                    <div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
-                </figcaption>
-            </div>
-        </div> <!-- col.// -->
-        <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/3.jpg"> </a>
-                <figcaption class="info-wrap">
-                    <a href="#" class="title">Great product name here</a>
-                    <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                </figcaption>
-            </div>
-        </div> <!-- col.// -->
-        <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/4.jpg"> </a>
-                <figcaption class="info-wrap">
-                    <a href="#" class="title">Just another product name</a>
-                    <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                </figcaption>
-            </div>
-        </div> <!-- col.// -->
-        <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/5.jpg"> </a>
-                <figcaption class="info-wrap">
-                    <a href="#" class="title">Just another product name</a>
-                    <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                </figcaption>
-            </div>
-        </div> <!-- col.// -->
-        <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/6.jpg"> </a>
-                <figcaption class="info-wrap">
-                    <a href="#" class="title">Some item name here</a>
-                    <div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
-                </figcaption>
-            </div>
-        </div> <!-- col.// -->
-        <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/7.jpg"> </a>
-                <figcaption class="info-wrap">
-                    <a href="#" class="title">Great product name here</a>
-                    <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                </figcaption>
-            </div>
-        </div> <!-- col.// -->
-        <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/9.jpg"> </a>
-                <figcaption class="info-wrap">
-                    <a href="#" class="title">Just another product name</a>
-                    <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                </figcaption>
-            </div>
-        </div> <!-- col.// -->
+        @endforeach
     </div> <!-- row.// -->
 
     </div><!-- container // -->
