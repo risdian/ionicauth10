@@ -368,7 +368,7 @@ class DashboardController extends Controller
     }
 
     public function export(){
-
+        return 'yes';
 
     }
 }
