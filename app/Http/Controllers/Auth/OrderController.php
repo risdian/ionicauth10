@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use App\Contracts\OrderContract;
 use App\Services\ToyyibPayService;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\BaseController;
 
 class OrderController extends BaseController
@@ -101,6 +103,12 @@ class OrderController extends BaseController
         return response()->json($order);
 
 
+    }
+
+    public function export()
+    {
+
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 
 }

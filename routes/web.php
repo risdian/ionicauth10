@@ -46,6 +46,7 @@ Route::get('/aneer', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/export', 'Auth\OrderController@export');
 
 Route::get('/', 'Site\HomeController@index');
 // Route::view('/', 'site.pages.homepage');
