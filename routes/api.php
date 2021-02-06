@@ -145,6 +145,9 @@ Route::group([
             Route::get('/tier', 'Auth\SettingController@commision_tier');
         });
 
+
+
+
         Route::group(['prefix'  =>   'deliveries'], function() {
 
             Route::get('', 'Auth\DeliveryController@index');
@@ -155,9 +158,10 @@ Route::group([
         Route::group(['prefix'  =>   'sales'], function() {
 
             Route::get('', 'Auth\DashboardController@sales');
-            Route::get('/commission', 'Auth\DashboardController@commission');
-            Route::post('/commission/sale', 'Auth\DashboardController@search');
+
         });
+
+
 
         Route::group(['prefix'  =>   'searching'], function() {
 
